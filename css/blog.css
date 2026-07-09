@@ -1,0 +1,17 @@
+article {
+    column-count: 2;
+}
+
+article .blog-header {
+    column-span: all;
+}
+
+img {
+    width:100%;
+}
+
+@media only screen and (max-width: 600px) { 
+    article {
+        column-count: 1;
+    }
+}
