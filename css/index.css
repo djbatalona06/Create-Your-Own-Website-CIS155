@@ -1,18 +1,88 @@
-#h2-me {
-    color: #45506c;
+/* ============================================================= */
+/* index.css - DOOM homepage theme (dark red + black)            */
+/* Loaded after styles.css, so these rules override the shared    */
+/* green garden look on the homepage only.                        */
+/* Units are relative only (rem/em/%/vw). Colors are hex or rgb.   */
+/* ============================================================= */
+
+/* TYPE selector - styles the whole page background and base text.
+   Two font properties here: font-family and letter-spacing. */
+body {
+  background-color: #111111;
+  color: #e8e0d5;
+  font-family: 'Lora', serif;
+  letter-spacing: 0.03em;
 }
 
-#h2-philosophy {
-    color: #6c4564;
+/* COMBINATION (grouped) selector - one rule for both heading levels.
+   font-weight is a second font property styling these elements. */
+h1,
+h2 {
+  color: rgb(200, 30, 30);
+  font-weight: bold;
 }
 
-#h2-start {
-    color: #6c6045;
+/* Override the shared header so the homepage banner is dark, not floral */
+header {
+  background-image: none;
+  background-color: #1c0d0d;
+  color: #e8e0d5;
 }
 
-#homepage-img {
-    width: 50%;
-    float: right;
-    margin: 10px;
-    border: #456c4d solid 3px;
+header::before {
+  content: none;
+}
+
+/* Dark navigation bar to match the theme */
+nav {
+  background-color: #2a0e0e;
+}
+
+/* RELATIONAL (descendant) selector - targets <a> tags inside <nav> */
+nav a {
+  color: #e8e0d5;
+}
+
+/* PSEUDO-CLASS - hover state for the navigation links */
+nav a:hover {
+  color: rgb(255, 90, 60);
+}
+
+/* ID selector - the banner image at the top of <main> */
+#doom-banner {
+  width: 100%;
+  max-width: 45rem;
+  display: block;
+  margin: 0 auto;
+  border: 0.25rem solid rgb(200, 30, 30);
+}
+
+/* CLASS selector - the list of devices that run DOOM */
+.device-list {
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+/* ATTRIBUTE selector - styles only links that open in a new tab */
+a[target="_blank"] {
+  color: rgb(255, 120, 90);
+  font-weight: bold;
+}
+
+/* PSEUDO-ELEMENT - decorative flourish after the main heading */
+header h1::after {
+  content: " \01F525";
+  /* small flame glyph after the title */
+}
+
+/* Simple footer styling */
+footer {
+  background-color: #1c0d0d;
+  color: #b8b0a5;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+footer a {
+  color: rgb(255, 120, 90);
 }

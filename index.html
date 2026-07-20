@@ -1,65 +1,109 @@
 <!DOCTYPE html>
+<!-- ============================================================= -->
+<!-- Can It Run DOOM? - Homepage                                   -->
+<!-- CIS155 Create Your Own Website assignment by DJ Batalona      -->
+<!-- This page is the homepage of a 4-page site about the 1993     -->
+<!-- game DOOM and its famous ability to run on almost any device. -->
+<!-- ============================================================= -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My PNW Garden</title>
+    <title>Can It Run DOOM?</title>
+    <!-- Google Font for the retro headings -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
+    <!-- Shared site styles, then homepage-only DOOM theme -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
+    <!-- Page banner and tagline -->
     <header>
-      <h1>Welcome to My Pacific Northwest Garden</h1>
+      <h1>Can It Run DOOM&trade;?</h1>
       <p>
-        Celebrating native plants, natural beauty, and the joy of growing things
+        Exploring the legendary 1993 shooter that ended up running on
+        practically everything with a screen.
       </p>
     </header>
+
+    <!-- Site navigation. Home is live; the other pages are placeholders -->
+    <!-- (href="#") that I will build out for the final project.         -->
     <nav>
       <a href="index.html">Home</a>
-      <a href="html/plants-in-my-garden.html">Plants in My Garden</a>
-      <a href="html/blog.html">Blog</a>
-      <a href="html/garden-map.html">Garden Map</a>
-      <a href="html/photo-gallery.html">Photo Gallery</a>
+      <a href="#">The Story</a>
+      <a href="#">Devices That Run DOOM</a>
+      <a href="#">Gallery</a>
     </nav>
 
     <main>
-      <img id="homepage-img" src="img/front-yard.jpg" />
+      <!-- Original banner artwork (SVG). Swap for a real screenshot later. -->
+      <img
+        id="doom-banner"
+        src="img/doom-banner.svg"
+        alt="Retro red and black banner reading DOOM"
+      />
+
+      <!-- Intro / About section -->
       <section>
-        <h2 id="h2-me">About Me</h2>
+        <h2>About DOOM</h2>
         <p>
-          Hi, I’m Lindsey, a nature-loving gardener from Kitsap County in the
-          beautiful Pacific Northwest. I've been gardening for three years—still
-          a beginner, but falling more in love with it every season. One of my
-          favorite moments last year was watching hummingbirds flit around my
-          gladiolus blooms—it was magical!
+          DOOM is a first-person shooter released by id Software in December
+          1993. Built by programmers John Carmack and John Romero, it dropped
+          players into a demon-infested Mars base armed with a shotgun and a
+          chainsaw. It was fast, violent, and technically groundbreaking for its
+          time, and it helped define an entire genre of video games.
+        </p>
+        <p>
+          More than thirty years later, DOOM is remembered for something almost
+          as impressive as the game itself: it seems to run on
+          <em>anything</em>. Because the original code was released to the
+          public, hobbyists have spent decades porting it to hardware that was
+          never meant to play games at all.
         </p>
       </section>
 
+      <!-- The signature list: unlikely devices that run DOOM -->
       <section>
-        <h2 id="h2-philosophy">My Gardening Philosophy</h2>
+        <h2>Why DOOM Runs on Everything</h2>
         <p>
-          I believe that nature is sacred and that everyone can do their part to
-          help restore and protect the native flora and fauna of the PNW. My
-          garden is a small but intentional space where native plants can
-          thrive, and pollinators and birds can find refuge. I never use
-          pesticides—just patience, observation, and a deep respect for the
-          natural world.
+          "It runs DOOM" has become an internet challenge of its own. If a
+          device has a processor and a screen &mdash; and sometimes even without
+          a real screen &mdash; someone has probably gotten DOOM working on it.
+          Here are some of the most surprising places it has shown up:
         </p>
+        <ul class="device-list">
+          <li>Graphing calculators used in math class</li>
+          <li>A digital pregnancy test</li>
+          <li>ATM machines and gas-station pumps</li>
+          <li>Smart refrigerators and washing machines</li>
+          <li>Digital cameras and printers</li>
+          <li>John Deere tractor dashboards</li>
+          <li>Tiny handheld "cyberdecks" built by hobbyists</li>
+        </ul>
       </section>
 
+      <!-- External reference link (also the hook for the CSS attribute rule) -->
       <section>
-        <h2 id="h2-start">How It All Started</h2>
+        <h2>Learn More</h2>
         <p>
-          Believe it or not, my love of gardening was first sparked by a video
-          game—Harvest Moon—in the 1990s. Years later, that spark turned into a
-          real connection to my home and region through gardening. Creating this
-          garden has helped me feel more rooted in the PNW than ever before.
+          Want the full history of the game and its endless ports? You can read
+          all about it on the
+          <a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)" target="_blank">
+            DOOM Wikipedia article</a>. Over the coming weeks I will add pages
+          about the story, a full gallery of devices, and my own favorite ports.
         </p>
       </section>
     </main>
+
+    <!-- Footer with the required character entity: &copy; (the (c) symbol) -->
+    <footer>
+      <p>
+        &copy; 2026 DJ Batalona &mdash; A CIS155 project.
+        <a href="index.html">Back to top</a>
+      </p>
+    </footer>
   </body>
 </html>
