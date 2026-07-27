@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- ============================================================= -->
+<!-- Can It Run DOOM? - Devices Page                               -->
+<!-- CIS155 Create Your Own Website assignment by DJ Batalona      -->
+<!-- Second page of the site. Presents the "it runs DOOM" devices   -->
+<!-- as a 3-column card grid instead of a plain list.                -->
+<!-- ============================================================= -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devices That Run DOOM</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Shared site styles, the DOOM theme, then this page's grid layout -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/devices.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Devices That Run DOOM</h1>
+      <p>
+        A closer look at the unlikely hardware hobbyists have talked into
+        running the 1993 classic.
+      </p>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">The Story</a>
+      <a href="devices.html">Devices That Run DOOM</a>
+      <a href="#">Gallery</a>
+    </nav>
+
+    <main>
+      <section>
+        <h2>The "It Runs DOOM" Challenge</h2>
+        <p>
+          Because id Software eventually released the DOOM source code,
+          programmers have spent decades porting it to hardware that was
+          never designed to play games at all. Below are some of the most
+          surprising ports, laid out in a card grid so you can browse them
+          at a glance.
+        </p>
+      </section>
+
+      <!-- 3-column card grid on wide screens, collapsing to fewer     -->
+      <!-- columns on narrower screens via the media queries in         -->
+      <!-- css/devices.css.                                             -->
+      <section class="device-grid">
+        <article class="device-card">
+          <h3>Graphing Calculators</h3>
+          <p>
+            TI-83s and TI-84s used in math classrooms everywhere have been
+            reprogrammed to run DOOM, monster closet and all.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>A Digital Pregnancy Test</h3>
+          <p>
+            Its tiny LCD screen and low-power processor turned out to be
+            just enough to render a scaled-down version of the game.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>ATMs &amp; Gas Pumps</h3>
+          <p>
+            Both run stripped-down versions of Windows, which is all the
+            excuse a hobbyist needs to get DOOM running on the till.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>Smart Appliances</h3>
+          <p>
+            Refrigerators and washing machines with touchscreen controls
+            have enough of a computer inside to boot the game.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>Cameras &amp; Printers</h3>
+          <p>
+            Digital cameras and office printers both hide a small embedded
+            OS &mdash; and an embedded OS is a DOOM port waiting to happen.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>Tractor Dashboards</h3>
+          <p>
+            John Deere's touchscreen displays run Linux under the hood,
+            which is more than enough horsepower for id's 1993 engine.
+          </p>
+        </article>
+
+        <article class="device-card">
+          <h3>Handheld Cyberdecks</h3>
+          <p>
+            Tiny hobbyist-built handhelds, cobbled together from Raspberry
+            Pis and spare parts, exist mostly to prove DOOM can run on them.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 DJ Batalona &mdash; A CIS155 project.
+        <a href="index.html">Back to top</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,7 +1,8 @@
 /* ============================================================= */
-/* index.css - DOOM homepage theme (dark red + black)            */
+/* index.css - DOOM site theme (dark red + black)                */
 /* Loaded after styles.css, so these rules override the shared    */
-/* green garden look on the homepage only.                        */
+/* green garden look. Shared across the homepage and other pages  */
+/* (e.g. devices.html) so the whole site stays on one theme.      */
 /* Units are relative only (rem/em/%/vw). Colors are hex or rgb.   */
 /* ============================================================= */
 
@@ -22,10 +23,10 @@ h2 {
   font-weight: bold;
 }
 
-/* Override the shared header so the homepage banner is dark, not floral */
+/* Override the shared header so the homepage banner is dark, not floral.
+   BACKGROUND GRADIENT - fades from near-black out to a deep red glow. */
 header {
-  background-image: none;
-  background-color: #1c0d0d;
+  background-image: linear-gradient(160deg, #1c0d0d 55%, #4a1010 100%);
   color: #e8e0d5;
 }
 
@@ -57,10 +58,25 @@ nav a:hover {
   border: 0.25rem solid rgb(200, 30, 30);
 }
 
-/* CLASS selector - the list of devices that run DOOM */
+/* CLASS selector - the list of devices that run DOOM.
+   Padding/margin on each item gives the list room to breathe. */
 .device-list {
   line-height: 1.8;
   padding-left: 1.5rem;
+}
+
+.device-list li {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.4rem;
+  border-left: 0.2rem solid rgb(200, 30, 30);
+}
+
+/* Extra breathing room + a subtle accent border on each content section */
+main section {
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border: 0.0625rem solid #3a1a1a;
+  border-radius: 0.3rem;
 }
 
 /* ATTRIBUTE selector - styles only links that open in a new tab */
@@ -80,6 +96,7 @@ footer {
   color: #b8b0a5;
   text-align: center;
   padding: 1.5rem;
+  margin-top: 2rem;
 }
 
 footer a {
