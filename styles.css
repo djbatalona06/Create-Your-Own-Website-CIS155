@@ -1,83 +1,106 @@
+/* Shared layout and responsive behavior for the whole site */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Lora', serif;
   margin: 0;
-  padding: 0;
-  background-color: #f4f9f4;
-  color: #2e3d2c;
+  font-family: "Lora", serif;
   line-height: 1.6;
+  background-color: #111111;
+  color: #e8e0d5;
 }
 
-header {
-  position: relative;
-  background-image: url("img/floral-background.png");
-  background-size: cover;
-  background-position: center;
-  color: rgb(52, 81, 56);
-  padding: 2rem;
-  text-align: center;
-  overflow: hidden;
-  /* ensures overlay stays within bounds */
+.page-shell {
+  display: grid;
+  grid-template-columns: minmax(12rem, 18rem) 1fr;
+  min-height: 100vh;
 }
 
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.7);
-  /* white overlay, adjust opacity */
-  z-index: 0;
+.sidebar {
+  background-color: #2a0e0e;
+  padding: 1.25rem;
+  border-right: 0.125rem solid #5a1616;
 }
 
-/* Ensure text appears above the overlay */
-header h1,
-header p {
-  position: relative;
-  z-index: 1;
-}
-
-nav {
-  background-color: #d9e8d4;
-  padding: 1rem;
+.site-nav {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-nav a {
+.site-nav a {
   text-decoration: none;
-  color: #2e3d2c;
-  font-weight: bold;
+  color: #f5eadc;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-nav a:hover {
-  color: #5d795a;
+.site-nav a:hover,
+.site-nav a:focus {
+  background-color: #c81e1e;
+  color: #ffffff;
+}
+
+.main-column {
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  padding: 1.5rem 2rem;
 }
 
 main {
-  padding: 2rem;
-  max-width: 50rem;
-  margin: auto;
+  width: min(100%, 60rem);
+  margin: 0 auto;
+  padding: 1.5rem 2rem 2.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-h1,
-h2 {
-  color: #2f4934;
+footer {
+  text-align: center;
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.12);
 }
 
+/* First responsive breakpoint */
+@media (max-width: 62rem) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
 
-@media only screen and (max-width: 50rem) {
-  img {
-    float: none;
-    width: 100%;
+  .sidebar {
+    border-right: none;
+    border-bottom: 0.125rem solid #5a1616;
+  }
+
+  .site-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
-@media only screen and (max-width: 37.5rem) {
-  nav {
+/* Second responsive breakpoint */
+@media (max-width: 40rem) {
+  header,
+  main,
+  footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .site-nav {
     flex-direction: column;
   }
 }

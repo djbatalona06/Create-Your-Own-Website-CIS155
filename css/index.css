@@ -1,9 +1,5 @@
 /* ============================================================= */
 /* index.css - DOOM site theme (dark red + black)                */
-/* Loaded after styles.css, so these rules override the shared    */
-/* green garden look. Shared across the homepage and other pages  */
-/* (e.g. devices.html) so the whole site stays on one theme.      */
-/* Units are relative only (rem/em/%/vw). Colors are hex or rgb.   */
 /* ============================================================= */
 
 /* TYPE selector - styles the whole page background and base text.
@@ -15,8 +11,7 @@ body {
   letter-spacing: 0.03em;
 }
 
-/* COMBINATION (grouped) selector - one rule for both heading levels.
-   font-weight is a second font property styling these elements. */
+
 h1,
 h2 {
   color: rgb(200, 30, 30);
@@ -30,8 +25,11 @@ header {
   color: #e8e0d5;
 }
 
-header::before {
-  content: none;
+#doom-banner {
+  width: 100%;
+  max-width: 45rem;
+  margin: 0 auto;
+  border: 0.25rem solid rgb(200, 30, 30);
 }
 
 /* Dark navigation bar to match the theme */
@@ -49,14 +47,6 @@ nav a:hover {
   color: rgb(255, 90, 60);
 }
 
-/* ID selector - the banner image at the top of <main> */
-#doom-banner {
-  width: 100%;
-  max-width: 45rem;
-  display: block;
-  margin: 0 auto;
-  border: 0.25rem solid rgb(200, 30, 30);
-}
 
 /* CLASS selector - the list of devices that run DOOM.
    Padding/margin on each item gives the list room to breathe. */

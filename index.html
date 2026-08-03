@@ -20,7 +20,23 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-     <!-- Page banner and tagline -->
+    <div class="page-shell">
+      <!-- Vertical navigation menu -->
+      <aside class="sidebar">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="story.html">The Story</a>
+          <a href="devices.html">Devices</a>
+          <a href="gallery.html">Gallery</a>
+          <a
+            href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
+            target="_blank"
+            rel="noopener"
+            >External Link</a
+          >
+        </nav>
+      </aside>
+      <div class="main-column">
     <header>
        <h1>Can It Run DOOM&trade;?</h1>
       <p>
@@ -28,23 +44,10 @@
         practically everything with a screen.
       </p>
     </header>
-    
-    <!-- Site navigation. Home is live; the other pages are placeholders -->
-    <!-- (href="#") that I will build out for the final project.         -->
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#">The Story</a>
-      <a href="devices.html">Devices That Run DOOM</a>
-      <a href="#">Gallery</a>
-    </nav>
 
     <main>
-  <!-- Original banner artwork (SVG). Swap for a real screenshot later. -->
-      <img
-        id="doom-banner"
-        src="doom-banner.svg"
-        alt="Retro red and black banner reading DOOM"
-      />
+  <!-- Same-page anchor link -->
+    <p><a href="#overview">Jump to the overview </a></p>
 
       <!-- Intro / About section -->      
        <section>
@@ -90,7 +93,7 @@
        <h2>Learn More</h2>        <p>
           Want the full history of the game and its endless ports? You can read
           all about it on the
-          <a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)" target="_blank">
+          <a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)" target="_blank" rel="noopener noreferrer">
             DOOM Wikipedia article</a>. Over the coming weeks I will add pages
           about the story, a full gallery of devices, and my own favorite ports.
         </p>

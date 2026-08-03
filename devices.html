@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!-- ============================================================= -->
 <!-- Can It Run DOOM? - Devices Page                               -->
-<!-- CIS155 Create Your Own Website assignment by DJ Batalona      -->
-<!-- Second page of the site. Presents the "it runs DOOM" devices   -->
-<!-- as a 3-column card grid instead of a plain list.                -->
 <!-- ============================================================= -->
 <html lang="en">
   <head>
@@ -20,13 +17,32 @@
     <link rel="stylesheet" href="css/devices.css" />
   </head>
   <body>
-    <header>
+    <div class="page-shell">
+      <!-- Same vertical nav menu on every page -->
+      <aside class="sidebar">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="story.html">The Story</a>
+          <a href="devices.html">Devices</a>
+          <a href="gallery.html">Gallery</a>
+          <a
+            href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
+            target="_blank"
+            rel="noopener"
+            >External Link</a
+          >
+        </nav>
+      </aside>
+
+    <div class="main-column">
+    
+     <header>
       <h1>Devices That Run DOOM</h1>
       <p>
         A closer look at the unlikely hardware hobbyists have talked into
         running the 1993 classic.
       </p>
-    </header>
+     </header>
 
     <nav>
       <a href="index.html">Home</a>
@@ -46,10 +62,8 @@
           at a glance.
         </p>
       </section>
-
-      <!-- 3-column card grid on wide screens, collapsing to fewer     -->
-      <!-- columns on narrower screens via the media queries in         -->
-      <!-- css/devices.css.                                             -->
+      
+       <!-- Card grid that changes layout at different breakpoints -->
       <section class="device-grid">
         <article class="device-card">
           <h3>Graphing Calculators</h3>
@@ -109,11 +123,13 @@
       </section>
     </main>
 
-    <footer>
-      <p>
-        &copy; 2026 DJ Batalona &mdash; A CIS155 project.
-        <a href="index.html">Back to top</a>
-      </p>
-    </footer>
+        <footer>
+          <p>
+            &copy; 2026 DJ Batalona &mdash; A CIS155 project.
+            <a href="index.html">Back to top</a>
+          </p>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>

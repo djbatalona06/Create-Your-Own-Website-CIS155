@@ -1,8 +1,5 @@
 /* ============================================================= */
 /* devices.css - card grid layout for devices.html                */
-/* Loaded after styles.css and index.css, so it only needs to add */
-/* the grid + card rules that are specific to this page.          */
-/* Units are relative only (rem/em/%/vw). Colors are hex or rgb.   */
 /* ============================================================= */
 
 /* 3 columns on wide screens, gap gives each card breathing room */
@@ -24,15 +21,15 @@
   color: rgb(255, 120, 90);
 }
 
-/* Drop to a 2-column layout on medium screens */
-@media only screen and (max-width: 50rem) {
+/* First breakpoint for the device  */
+@media  (max-width: 62rem) {
   .device-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Drop to a single column on narrow / phone screens */
-@media only screen and (max-width: 37.5rem) {
+/* Second breakpoint for the device */
+@media  (max-width: 40rem) {
   .device-grid {
     grid-template-columns: 1fr;
   }
