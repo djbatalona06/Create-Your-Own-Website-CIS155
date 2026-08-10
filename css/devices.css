@@ -1,15 +1,20 @@
-/* ============================================================= */
-/* devices.css - card grid layout for devices.html                */
-/* ============================================================= */
+/* devices.css - card grid layout for devices.html */
 
-/* 3 columns on wide screens, gap gives each card breathing room */
+/* auto-fit with minmax lets the browser work out how many columns
+   fit, so the cards go 3 to 2 to 1 on their own. Doing it this way
+   replaced two media queries that hard coded the column count. */
 .device-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
+/* Each card is a flex column so the cards in a row match heights
+   and the heading stays pinned to the top */
 .device-card {
+  display: flex;
+  flex-direction: column;
   background-color: #1c0d0d;
   border: 0.0625rem solid rgb(200, 30, 30);
   border-radius: 0.3rem;
@@ -21,16 +26,19 @@
   color: rgb(255, 120, 90);
 }
 
-/* First breakpoint for the device  */
-@media  (max-width: 62rem) {
-  .device-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.device-card p {
+  margin-bottom: 0;
 }
 
-/* Second breakpoint for the device */
-@media  (max-width: 40rem) {
+/* Under about 416px a 15rem column is wider than the screen and the
+   cards overflow, so force a single column */
+@media (max-width: 26rem) {
   .device-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .device-card {
+    padding: 1rem;
   }
 }

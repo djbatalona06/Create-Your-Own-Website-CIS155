@@ -1,0 +1,99 @@
+/* gallery.css - grid layout for gallery.html using named areas */
+
+/* The strings below are a map of the layout. The featured tile
+   takes the whole first row, then six tiles fill two rows of three. */
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "feature feature feature"
+    "a       b       c"
+    "d       e       f";
+}
+
+/* Each tile is assigned to one of the names in the map above */
+.tile-feature {
+  grid-area: feature;
+}
+
+.tile-a {
+  grid-area: a;
+}
+
+.tile-b {
+  grid-area: b;
+}
+
+.tile-c {
+  grid-area: c;
+}
+
+.tile-d {
+  grid-area: d;
+}
+
+.tile-e {
+  grid-area: e;
+}
+
+.tile-f {
+  grid-area: f;
+}
+
+.tile {
+  background-color: #1c0d0d;
+  border: 0.0625rem solid rgb(200, 30, 30);
+  border-radius: 0.3rem;
+  padding: 1.25rem;
+}
+
+.tile h3 {
+  margin-top: 0;
+  color: rgb(255, 120, 90);
+}
+
+.tile p {
+  margin-bottom: 0;
+}
+
+/* Heavier border and the same gradient as the page headers so the
+   featured tile stands out from the rest */
+.tile-feature {
+  border-width: 0.15rem;
+  background-image: linear-gradient(160deg, #1c0d0d 55%, #3a1010 100%);
+}
+
+/* Three columns is too cramped by here, so redraw the map with two.
+   The featured tile still spans the full width. */
+@media (max-width: 56rem) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "feature feature"
+      "a       b"
+      "c       d"
+      "e       f";
+  }
+}
+
+/* One column on phones so nothing gets cut off and the headings
+   stop breaking in the middle of a word */
+@media (max-width: 37.5rem) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    grid-template-areas:
+      "feature"
+      "a"
+      "b"
+      "c"
+      "d"
+      "e"
+      "f";
+  }
+
+  .tile {
+    padding: 1rem;
+  }
+}

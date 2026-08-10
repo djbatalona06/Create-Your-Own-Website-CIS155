@@ -1,55 +1,187 @@
-<!DOCKTYPE html> 
-<html lang ="en">
+<!DOCTYPE html>
+<!-- ============================================================= -->
+<!-- Can It Run DOOM? - The Story page                              -->
+<!-- Background on how the game was made and why it gets ported     -->
+<!-- to everything. Third page of the CIS155 site.                  -->
+<!-- ============================================================= -->
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Devices That Run DOOM</title>
+    <title>The Story of DOOM</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
-    <!-- Shared site styles, the DOOM theme, then this page's grid layout -->
+    <!-- Shared styles, the DOOM theme, then this page's two-column layout -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/devices.css" />
+    <link rel="stylesheet" href="css/story.css" />
   </head>
   <body>
     <div class="page-shell">
-      <!-- Same vertical nav menu on every page -->
+      <!-- Same nav menu on every page -->
       <aside class="sidebar">
         <nav class="site-nav" aria-label="Primary">
           <a href="index.html">Home</a>
           <a href="story.html">The Story</a>
-          <a href="#">Devices</a>
-          <a href="#">Gallery</a>
+          <a href="devices.html">Devices</a>
+          <a href="gallery.html">Gallery</a>
           <a
             href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
             target="_blank"
             rel="noopener"
             >External Link</a
-         
           >
         </nav>
       </aside>
 
       <div class="main-column">
-        <header>
-          <h1>The Story</h1>
-          <p>More background on the rise of DOOM and why it became such a cult classic.</p>
+        <header id="top">
+          <h1>The Story of DOOM</h1>
+          <p>How four programmers in Texas built a game that will not die.</p>
         </header>
 
         <main>
-          <section>
-            <h2>Under Construction</h2>
-            <p>This page is still being built. It will be expanded soon with more content.</p>
-          </section>
+          <!-- Article on the left, quick facts box on the right.
+               Drops to one column on smaller screens. -->
+          <div class="story-layout">
+            <div class="story-main">
+              <section>
+                <h2>Before DOOM</h2>
+                <p>
+                  id Software started as four guys working for a company called
+                  Softdisk in Louisiana. John Carmack, John Romero, Tom Hall and
+                  Adrian Carmack spent their nights making games nobody had
+                  asked them for. In 1990 Carmack worked out how to get a PC to
+                  scroll smoothly, which most people at the time thought only a
+                  console could do. The group used it to rebuild the first level
+                  of Super Mario Bros. 3 in a single night and mailed the demo
+                  to Nintendo. Nintendo passed, but the team knew what they had.
+                  They left and started id Software in February 1991.
+                </p>
+                <p>
+                  Commander Keen paid the bills for the next year or so. Then
+                  Wolfenstein 3D came out in May 1992 and changed things. It put
+                  you inside a maze of textured walls at a speed nobody expected
+                  from a 386. It sold well and got a lot of attention, some of
+                  it bad. id started on something bigger almost right away.
+                </p>
+              </section>
+
+              <section>
+                <h2>Building the Engine</h2>
+                <p>
+                  Carmack wrote most of the DOOM engine over 1992 and 1993.
+                  Wolfenstein levels were a flat grid of square rooms. DOOM
+                  levels could have angled walls, rooms at different heights,
+                  staircases, moving platforms and pits of toxic waste. He got
+                  there using binary space partitioning, a method out of
+                  computer graphics research that no shipped game had used yet.
+                  The BSP tree tells the engine what order to draw things in, so
+                  it never has to check every surface. That is the main reason
+                  the game ran well on hardware with no business drawing 3D.
+                </p>
+                <p>
+                  A lot of the rest is smoke and mirrors. Lighting is faked by
+                  swapping in darker copies of the palette, so far hallways fade
+                  out and the level feels bigger than it is. Enemies are flat
+                  images drawn from eight angles, which is why a cacodemon always
+                  looks like it is staring right at you. None of it is real 3D.
+                  Every shortcut was there so the game would still run on a 386
+                  with 4 MB of RAM.
+                </p>
+              </section>
+
+              <section>
+                <h2>Release and Shareware</h2>
+                <p>
+                  DOOM went up on a university FTP server in Wisconsin on
+                  December 10, 1993. So many people tried to grab it at once that
+                  the server fell over and the admin had to ask id to hold off.
+                  The first nine levels were free to copy and pass around, and
+                  the rest cost money. Within two years people were claiming it
+                  was installed on more PCs than Windows was.
+                </p>
+                <p>
+                  Deathmatch shipped with it. Office networks that had been put
+                  in for spreadsheets got buried under DOOM traffic, and plenty
+                  of companies banned it outright. The word deathmatch came out
+                  of id's office, and the multiplayer culture it started is still
+                  going.
+                </p>
+              </section>
+
+              <section>
+                <h2>The Source Code Release</h2>
+                <p>
+                  On December 23, 1997, Carmack released the DOOM source code.
+                  That is the reason this site exists. Within a few weeks it was
+                  running on Linux, on the Amiga and on the Sega Saturn. Source
+                  ports like Chocolate DOOM, PrBoom and GZDoom kept it playable
+                  on hardware id never planned for, and each one gave the next
+                  person a head start.
+                </p>
+                <p>
+                  The code is small, it is written in portable C, and it barely
+                  needs any memory. That combination turned it into the standard
+                  test for whether something counts as a real computer. If a
+                  device has a processor, some memory and any way to light up
+                  pixels, somebody is going to make it run DOOM and then post the
+                  video.
+                </p>
+              </section>
+
+              <section>
+                <h2>Why It Never Stopped</h2>
+                <p>
+                  Getting DOOM onto a printer or a thermostat is not really about
+                  the game. You have to read documentation that was never written
+                  for you, find some way to load your own code onto the thing,
+                  and fit a renderer into hardware built to show four lines of
+                  text. The payoff is a short video, but the real point is showing
+                  the hardware can do more than the company that sold it wanted.
+                </p>
+                <p>
+                  Thirty years later DOOM is a benchmark, a running joke and a
+                  rite of passage all at once. My favorite ports are over on the
+                  <a href="devices.html">Devices</a> page.
+                </p>
+              </section>
+            </div>
+
+            <!-- Second column of the flex layout -->
+            <aside class="story-aside">
+              <h2>Quick Facts</h2>
+              <dl class="fact-list">
+                <dt>Released</dt>
+                <dd>December 10, 1993</dd>
+                <dt>Developer</dt>
+                <dd>id Software</dd>
+                <dt>Lead programmer</dt>
+                <dd>John Carmack</dd>
+                <dt>Engine</dt>
+                <dd>id Tech 1</dd>
+                <dt>Source released</dt>
+                <dd>December 23, 1997</dd>
+                <dt>License</dt>
+                <dd>GPL, since 1999</dd>
+              </dl>
+            </aside>
+          </div>
         </main>
 
-        <footer>
-          <p>
+        <!-- Same footer bar as the other pages -->
+        <footer class="site-footer">
+          <p class="footer-copy">
             &copy; 2026 DJ Batalona &mdash; A CIS155 project.
-            <a href="index.html">Back to top</a>
           </p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="devices.html">Devices</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#top">Back to top</a></li>
+          </ul>
         </footer>
       </div>
     </div>

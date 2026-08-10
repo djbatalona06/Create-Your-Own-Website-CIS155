@@ -1,0 +1,70 @@
+/* story.css - two column reading layout for story.html */
+
+/* Article and the facts box sit next to each other. flex-wrap is
+   what lets the box drop underneath on a narrow screen. */
+.story-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* The article gets three shares of the space, the box gets one.
+   The basis values stop either one from shrinking down to a
+   column of single words. */
+.story-main {
+  flex: 3 1 24rem;
+}
+
+.story-aside {
+  flex: 1 1 14rem;
+  background-color: #1c0d0d;
+  border: 0.0625rem solid #3a1a1a;
+  border-radius: 0.3rem;
+  padding: 1.25rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.story-aside h2 {
+  margin-top: 0;
+}
+
+.fact-list {
+  margin: 0;
+}
+
+.fact-list dt {
+  color: rgb(255, 120, 90);
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+
+.fact-list dd {
+  margin: 0;
+}
+
+/* Below this the two columns are both too narrow to read, so the
+   facts box goes full width and stops sticking to the top */
+@media (max-width: 56rem) {
+  .story-layout {
+    gap: 1.25rem;
+  }
+
+  .story-aside {
+    position: static;
+    flex-basis: 100%;
+  }
+}
+
+/* Less padding so the text inside the box is not jammed against
+   the border on a phone */
+@media (max-width: 30rem) {
+  .story-aside {
+    padding: 1rem;
+  }
+
+  .fact-list dt {
+    margin-top: 0.6rem;
+  }
+}

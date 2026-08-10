@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- ============================================================= -->
+<!-- Can It Run DOOM? - Gallery Page                                -->
+<!-- The notable ports, laid out with a CSS grid that uses named    -->
+<!-- areas so the featured one can span the whole first row.        -->
+<!-- ============================================================= -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOOM Port Gallery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Shared styles, the DOOM theme, then this page's grid -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <!-- Same nav menu on every page -->
+      <aside class="sidebar">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="story.html">The Story</a>
+          <a href="devices.html">Devices</a>
+          <a href="gallery.html">Gallery</a>
+          <a
+            href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
+            target="_blank"
+            rel="noopener"
+            >External Link</a
+          >
+        </nav>
+      </aside>
+
+      <div class="main-column">
+        <header id="top">
+          <h1>Port Gallery</h1>
+          <p>One featured port up top, then the rest of the hall of fame.</p>
+        </header>
+
+        <main>
+          <section>
+            <h2>Hall of Fame</h2>
+            <p>
+              Every tile below is a real port that somebody documented. The
+              layout is a CSS grid using named areas, so the arrangement is
+              written out as a small map in the stylesheet instead of a list of
+              column numbers. I redraw that map at each breakpoint to go from
+              three columns down to two and then one.
+            </p>
+          </section>
+
+          <!-- Grid of ports. See css/gallery.css for the area map. -->
+          <section class="gallery-grid">
+            <article class="tile tile-feature">
+              <h3>Featured: The Pregnancy Test</h3>
+              <p>
+                In 2020 a developer named Foone Turing gutted a digital
+                pregnancy test, kept the tiny screen, and drove it with a
+                microcontroller running DOOM. The original hardware only really
+                supplied the display and the case, which started a long argument
+                online about what counts as running DOOM. It is still the most
+                famous one anybody has done, and it is the reason the whole
+                challenge went mainstream.
+              </p>
+            </article>
+
+            <article class="tile tile-a">
+              <h3>TI-84 Plus</h3>
+              <p>A graphing calculator that spent math class fighting imps.</p>
+            </article>
+
+            <article class="tile tile-b">
+              <h3>Kodak DC260</h3>
+              <p>
+                A 1998 digital camera with a scripting engine and just enough
+                memory to hold the shareware levels.
+              </p>
+            </article>
+
+            <article class="tile tile-c">
+              <h3>Canon Pixma Printer</h3>
+              <p>
+                A security researcher got it onto the printer's own status
+                screen after finding a hole in the firmware.
+              </p>
+            </article>
+
+            <article class="tile tile-d">
+              <h3>Samsung Smart Fridge</h3>
+              <p>
+                The organizer screen on the door, doing something other than
+                grocery lists for once.
+              </p>
+            </article>
+
+            <article class="tile tile-e">
+              <h3>John Deere 4240</h3>
+              <p>
+                A tractor dashboard running Linux, shown off at DEF CON during a
+                talk about the right to repair.
+              </p>
+            </article>
+
+            <article class="tile tile-f">
+              <h3>Raspberry Pi Cyberdeck</h3>
+              <p>
+                Handhelds built out of spare parts that exist mostly to run this
+                one game.
+              </p>
+            </article>
+          </section>
+
+          <section>
+            <h2>What Counts as a Port?</h2>
+            <p>
+              People argue about this constantly. The strict answer is that the
+              device's own processor has to run the game code. Under that rule
+              the pregnancy test does not count, since a separate
+              microcontroller does all the work and the test only supplies a
+              screen. The looser answer is that if the pixels are coming out of
+              a pregnancy test, then the pregnancy test runs DOOM. Nobody has
+              settled it, which is probably why people keep trying.
+            </p>
+            <p>
+              I think the strict version is the more interesting one. It forces
+              you to work inside a real limit: this exact chip, this much
+              memory, this specific display controller. That is where the actual
+              engineering happens, and it is why a calculator port gets more
+              respect than a Raspberry Pi taped behind somebody else's screen.
+            </p>
+            <p>
+              For the background on how the game ended up here, start with
+              <a href="story.html">The Story</a>, then check the full list on the
+              <a href="devices.html">Devices</a> page.
+            </p>
+          </section>
+        </main>
+
+        <!-- Same footer bar as the other pages -->
+        <footer class="site-footer">
+          <p class="footer-copy">
+            &copy; 2026 DJ Batalona &mdash; A CIS155 project.
+          </p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="story.html">The Story</a></li>
+            <li><a href="devices.html">Devices</a></li>
+            <li><a href="#top">Back to top</a></li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

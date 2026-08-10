@@ -37,13 +37,24 @@
         </nav>
       </aside>
       <div class="main-column">
-    <header>
-       <h1>Can It Run DOOM&trade;?</h1>
-      <img id="doom-banner" src="DOOM Header.jpg" alt="DOOM game artwork" />
-      <p>
-        Exploring the legendary 1993 shooter that ended up running on
-        practically everything with a screen.
-      </p>
+        <header id="top">
+      <!-- Intro text and banner sit side by side, then stack on phones -->
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Can It Run DOOM&trade;?</h1>
+          <p>
+            Exploring the legendary 1993 shooter that ended up running on
+            practically everything with a screen.
+          </p>
+          <!-- Three quick numbers about the game -->
+          <ul class="hero-stats">
+            <li><strong>1993</strong><span>Released</span></li>
+            <li><strong>30+</strong><span>Years of ports</span></li>
+            <li><strong>&infin;</strong><span>Devices</span></li>
+          </ul>
+        </div>
+        <img id="doom-banner" src="DOOM Header.jpg" alt="DOOM game artwork" />
+      </div>
     </header>
 
     <main>
@@ -101,11 +112,16 @@
       </section>
     </main>
     <!-- Footer with the required character entity: &copy; (the (c) symbol) -->
-    <footer>
-      <p>
-        &copy; 2026 DJ Batalona &mdash; A CIS155 project.
-        <a href="index.html">Back to top</a>
-      </p>
+    <footer class="site-footer">
+      <p class="footer-copy">&copy; 2026 DJ Batalona &mdash; A CIS155 project. </p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="devices.html">Devices</a></li>
+        <li><a href="#top">Back to top</a></li>
+      </ul>  
     </footer>
-  </body>
+  </div><!--/.main-column -->
+ </div><!--/.page-shell -->
+ </body>
 </html>

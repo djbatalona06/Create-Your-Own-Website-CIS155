@@ -25,23 +25,25 @@ header {
   color: #e8e0d5;
 }
 
+/* ID selector - the banner image. It is one half of the flex row in
+   the header, so it needs to shrink with the column instead of
+   holding a fixed width and overflowing. */
 #doom-banner {
   width: 100%;
-  max-width: 45rem;
+  max-width: 32rem;
   height: auto;
   display: block;
-  margin: 1.5rem auto;
   border: 0.25rem solid rgb(200, 30, 30);
   border-radius: 0.35rem;
 }
 
+/* Thinner frame on phones so the border does not eat the picture */
 @media (max-width: 40rem) {
   #doom-banner {
-    max-width: 100%;
-    margin: 1rem auto;
     border-width: 0.2rem;
   }
 }
+
 
 /* Dark navigation bar to match the theme */
 nav {
