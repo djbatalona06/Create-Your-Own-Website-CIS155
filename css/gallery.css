@@ -97,3 +97,48 @@
     padding: 1rem;
   }
 }
+
+/* Wrapper lets the table scroll sideways on narrow screens instead of
+   squeezing columns or breaking the page layout */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.ports-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1c0d0d;
+}
+
+.ports-table caption {
+  caption-side: top;
+  text-align: left;
+  color: #b8b0a5;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.ports-table th,
+.ports-table td {
+  border: 0.0625rem solid rgb(200, 30, 30);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ports-table thead th {
+  background-color: #2a0e0e;
+  color: rgb(255, 120, 90);
+}
+
+.ports-table tbody th {
+  color: rgb(255, 120, 90);
+  font-weight: bold;
+}
+
+@media (max-width: 40rem) {
+  .ports-table th,
+  .ports-table td {
+    padding: 0.5rem 0.6rem;
+  }
+}

@@ -11,14 +11,19 @@ body {
   letter-spacing: 0.03em;
 }
 
-
+/* Font Awesome icon next to the homepage title. */
 h1,
 h2 {
   color: rgb(200, 30, 30);
   font-weight: bold;
 }
 
-/* Override the shared header so the homepage banner is dark, not floral.
+/* Font Awesome flame icon next to the homepage title. */
+.doom-icon {
+  color: rgb(255, 120, 90);
+  margin-right: 0.5rem;
+}
+/* Override the shared header so the homepage banner is dark,
    BACKGROUND GRADIENT - fades from near-black out to a deep red glow. */
 header {
   background-image: linear-gradient(160deg, #1c0d0d 55%, #4a1010 100%);
