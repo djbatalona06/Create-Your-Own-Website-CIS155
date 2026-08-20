@@ -9,16 +9,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Story of DOOM</title>
+
+    <!-- Skull favicon, drawn inline as an SVG so there is no extra file -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Cellipse cx='50' cy='44' rx='30' ry='28' fill='%23c81e1e'/%3E%3Cellipse cx='38' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cellipse cx='62' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cpolygon points='50,50 45,60 55,60' fill='%23111111'/%3E%3Crect x='35' y='66' width='30' height='10' fill='%23c81e1e'/%3E%3Crect x='38' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='46' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='54' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='62' y='66' width='3' height='10' fill='%23111111'/%3E%3C/svg%3E"
+    />
+
+    <!-- Google Font for the headings and body copy -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
-    <!-- Shared styles, the DOOM theme, then this page's two-column layout -->
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <!-- Font Awesome, used for the flame icon beside the page title -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Shared theme, shared layout, then this page's two-column layout -->
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/story.css" />
   </head>
   <body>
+    <!-- Lets keyboard users jump past the nav straight to the content -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <div class="page-shell">
       <!-- Same nav menu on every page -->
       <aside class="sidebar">
@@ -38,11 +56,14 @@
 
       <div class="main-column">
         <header id="top">
-          <h1>The Story of DOOM</h1>
+          <h1>
+            <i class="fa-solid fa-fire doom-icon" aria-hidden="true"></i>
+            The Story of DOOM
+          </h1>
           <p>How four programmers in Texas built a game that will not die.</p>
         </header>
 
-        <main>
+        <main id="main-content">
           <!-- Article on the left, quick facts box on the right.
                Drops to one column on smaller screens. -->
           <div class="story-layout">
@@ -171,7 +192,7 @@
           </div>
         </main>
 
-        <!-- Same footer bar as the other pages -->
+        <!-- Footer bar. Character entity &copy; renders the (c) symbol. -->
         <footer class="site-footer">
           <p class="footer-copy">
             &copy; 2026 DJ Batalona &mdash; A CIS155 project.
@@ -180,6 +201,14 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="devices.html">Devices</a></li>
             <li><a href="gallery.html">Gallery</a></li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=GrWzXzHcuFw"
+                target="_blank"
+                rel="noopener"
+                >Install guide (YouTube)</a
+              >
+            </li>
             <li><a href="#top">Back to top</a></li>
           </ul>
         </footer>

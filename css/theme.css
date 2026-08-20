@@ -1,0 +1,146 @@
+/* ---------------------------------------------------------------
+   theme.css - shared look for every page: colors, fonts, borders and
+   the small decorative touches. Structure and breakpoints are in
+   layout.css, which loads after this file.
+   --------------------------------------------------------------- */
+
+/* TYPE selector - the page background and base text. Two font
+   properties here: font-family and letter-spacing. */
+body {
+  background-color: #111111;
+  color: #e8e0d5;
+  font-family: 'Lora', serif;
+  letter-spacing: 0.03em;
+}
+
+/* Heading red. Lightened from rgb(200, 30, 30), which only measured
+   3.29:1 against the near-black background. This clears the 4.5:1
+   contrast minimum at any text size. */
+h1,
+h2 {
+  color: rgb(230, 70, 60);
+  font-weight: bold;
+}
+
+/* Font Awesome flame icon beside each page title */
+.doom-icon {
+  color: rgb(255, 120, 90);
+  margin-right: 0.5rem;
+}
+
+/* Skip link is invisible until focused, so it needs to stand out */
+.skip-link {
+  background-color: #c81e1e;
+  color: #ffffff;
+}
+
+/* PSEUDO-CLASS - a visible ring for anything reached by keyboard */
+a:focus-visible {
+  outline: 0.15rem solid rgb(255, 180, 90);
+  outline-offset: 0.15rem;
+}
+
+.sidebar {
+  background-color: #2a0e0e;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #f5eadc;
+  border-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* PSEUDO-CLASS - hover and focus states for the navigation links */
+.site-nav a:hover,
+.site-nav a:focus {
+  background-color: #c81e1e;
+  color: #ffffff;
+}
+
+/* BACKGROUND GRADIENT - fades from near-black out to a deep red glow */
+header {
+  background-image: linear-gradient(160deg, #1c0d0d 55%, #4a1010 100%);
+  color: #e8e0d5;
+}
+
+/* ID selector - the banner image. It is one half of the flex row in
+   the header, so it shrinks with the column instead of overflowing. */
+#doom-banner {
+  width: 100%;
+  max-width: 32rem;
+  border: 0.25rem solid rgb(200, 30, 30);
+  border-radius: 0.35rem;
+}
+
+/* The small stat boxes under the homepage intro */
+.hero-stats li {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 0.2rem solid rgb(200, 30, 30);
+}
+
+.hero-stats strong {
+  color: rgb(255, 120, 90);
+}
+
+.hero-stats span {
+  color: #b8b0a5;
+}
+
+/* CLASS selector - the list of devices on the homepage. Padding and
+   margin on each item give the list room to breathe. */
+.device-list {
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.device-list li {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.4rem;
+  border-left: 0.2rem solid rgb(200, 30, 30);
+}
+
+/* Breathing room and a subtle accent border on each content section */
+main section {
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border: 0.0625rem solid #3a1a1a;
+  border-radius: 0.3rem;
+}
+
+/* The card and tile sections are already made of bordered boxes, so
+   they skip the outer panel and avoid a box inside a box */
+main section.device-grid,
+main section.gallery-grid {
+  padding: 0;
+  border: none;
+}
+
+/* Content links. Without this they fall back to the browser's default
+   blue, which only measures about 2.3:1 on this dark background. */
+main a,
+main a:visited {
+  color: rgb(255, 150, 120);
+}
+
+/* The icons at the top of each card and tile */
+.card-icon {
+  color: rgb(255, 120, 90);
+}
+
+/* ATTRIBUTE selector - styles only links that open in a new tab */
+a[target="_blank"] {
+  color: rgb(255, 120, 90);
+  font-weight: bold;
+}
+
+footer {
+  background-color: #1c0d0d;
+  color: #b8b0a5;
+  text-align: center;
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.12);
+}
+
+footer a {
+  color: rgb(255, 120, 90);
+}

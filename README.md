@@ -17,40 +17,72 @@ ports and source ports that make it possible.
 | --- | --- | --- |
 | Home | `index.html` | Intro/hero, a quick "About DOOM" overview, and a signature list of unlikely devices |
 | The Story | `story.html` | A two-column history of id Software and the making of DOOM, with a "Quick Facts" sidebar |
-| Devices | `devices.html` | A card grid of the odd hardware DOOM has been ported to (calculators, a pregnancy test, tractors, printers...) |
+| Devices | `devices.html` | A card layout of the odd hardware DOOM has been ported to (calculators, a pregnancy test, tractors, printers...) |
 | Gallery | `gallery.html` | A "Hall of Fame" grid of notable ports, a discussion of what counts as a real port, and a table comparing well-known source ports |
+
+## File layout
+
+```text
+my-website/
+  index.html  story.html  devices.html  gallery.html
+  css/
+    theme.css     shared colors, fonts and decoration
+    layout.css    shared structure, flex/grid containers, all shared breakpoints
+    story.css     two-column reading layout
+    devices.css   card layout
+    gallery.css   named-area grid and the source-port table
+  img/
+    doom-header.jpg
+  README.md
+```
+
+Every page loads `theme.css`, then `layout.css`, then its own stylesheet.
+Layout comes second so its breakpoints always win over the plain rules in
+the theme.
 
 ## Features
 
-* Responsive layout built with CSS Grid and Flexbox — sidebar nav that
-  collapses to a top bar on narrow screens, a card/tile grid for the
-  Devices and Gallery pages, a two-column Story layout that stacks on
-  narrow screens
+* Responsive layout built with CSS Grid and Flexbox — a sidebar nav that
+  collapses to a top bar on narrow screens, a card layout on Devices, a
+  named-area grid on Gallery, and a two-column Story layout that stacks
+* Six shared breakpoints in `layout.css` (75rem, 62rem, 48rem, 40rem,
+  30rem, 22.5rem), plus page-specific ones in the page stylesheets
 * Google Font: **Lora**, loaded from Google Fonts
-* Icon: a Font Awesome flame icon next to the homepage title
-* Favicon: a red skull silhouette, drawn as an inline SVG (no separate
-  image file needed)
+* Icon: a Font Awesome flame beside every page title
+* Favicon: a red skull silhouette, drawn as an inline SVG so there is no
+  separate image file
+* Inline SVG icons on every device card and gallery tile, marked
+  `aria-hidden` because the heading beside each one is the real label
 * A data table on the Gallery page comparing well-known DOOM source ports
   (Chocolate Doom, PrBoom+, GZDoom, Crispy Doom, Doom Retro)
+* Accessibility: a skip-to-content link, a visible keyboard focus ring,
+  `scope` on every table header, and heading colors that clear the 4.5:1
+  contrast minimum
 
 ## Recent Updates
 
-* Fixed the devices page card grid so the last row of cards centers
+* Reorganized the project files — the banner moved to `img/doom-header.jpg`,
+  `styles.css` became `css/layout.css`, and `css/index.css` became
+  `css/theme.css` since it is shared by all four pages
+* Removed leftover stylesheets from earlier assignments
+* Split the two shared stylesheets by job so nothing is declared twice —
+  theme owns color and type, layout owns structure and breakpoints
+* Rolled the favicon and the Font Awesome flame out to all four pages
+* Added a skip link, a keyboard focus ring, and a lighter heading red for
+  contrast
+* Added SVG icons to the device cards and gallery tiles
+* Fixed the devices page card layout so the last row of cards centers
   instead of being stranded on the left with empty space
-* Added a YouTube link in the homepage footer showing how to install a
-  DOOM source port yourself
-* Fixed the Font Awesome icon, the favicon, and the source-port table so
-  they render and line up correctly
+* Added a YouTube install-guide link to every page footer, opening in a new
+  tab like the nav's external link
 
 ## Tech
 
 Plain HTML5 + CSS3 — no frameworks, no build step. Open `index.html` in a
-browser to view the site.
+browser to view the site. Deployed to GitHub Pages by
+`.github/workflows/static.yml` on every push to `main`.
 
 ## Ideas for later
 
-* Roll the favicon out to `story.html`, `devices.html`, and `gallery.html`
-  (currently only on the homepage)
-* Have the YouTube footer link open in a new tab, matching the nav's
-  external link
 * Short clips or screenshots of a few of the devices actually running DOOM
+* A page on the WAD file format and how custom levels get loaded

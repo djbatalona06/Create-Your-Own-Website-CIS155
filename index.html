@@ -9,28 +9,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Can It Run DOOM?</title>
-    <link 
+    <title>Can It Run DOOM?</title>
+
+    <!-- Skull favicon, drawn inline as an SVG so there is no extra file -->
+    <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Cellipse cx='50' cy='44' rx='30' ry='28' fill='%23c81e1e'/%3E%3Cellipse cx='38' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cellipse cx='62' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cpolygon points='50,50 45,60 55,60' fill='%23111111'/%3E%3Crect x='35' y='66' width='30' height='10' fill='%23c81e1e'/%3E%3Crect x='38' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='46' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='54' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='62' y='66' width='3' height='10' fill='%23111111'/%3E%3C/svg%3E" 
-      />
-      <!-- Google Font for the retro headings -->
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Cellipse cx='50' cy='44' rx='30' ry='28' fill='%23c81e1e'/%3E%3Cellipse cx='38' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cellipse cx='62' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cpolygon points='50,50 45,60 55,60' fill='%23111111'/%3E%3Crect x='35' y='66' width='30' height='10' fill='%23c81e1e'/%3E%3Crect x='38' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='46' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='54' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='62' y='66' width='3' height='10' fill='%23111111'/%3E%3C/svg%3E"
+    />
+
+    <!-- Google Font for the headings and body copy -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome, used for the flame icon beside the page title -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-     /> 
-    <!-- Shared site styles, then homepage-only DOOM theme -->
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    />
+
+    <!-- Shared theme first, then the shared layout and its breakpoints -->
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
   </head>
   <body>
+    <!-- Lets keyboard users jump past the nav straight to the content -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <div class="page-shell">
-      <!-- Vertical navigation menu -->
+      <!-- Vertical navigation menu, the same on every page -->
       <aside class="sidebar">
         <nav class="site-nav" aria-label="Primary">
           <a href="index.html">Home</a>
@@ -45,98 +53,122 @@
           >
         </nav>
       </aside>
+
       <div class="main-column">
         <header id="top">
-      <!-- Intro text and banner sit side by side, then stack on phones -->
-      <div class="hero">
-        <div class="hero-text">
-          
-          <h1>
-            <i class="fa-solid fa-fire doom-icon" aria-hidden="true"></i> 
-            Can It Run DOOM&trade;?
-          </h1>
+          <!-- Intro text and banner sit side by side, then stack on phones -->
+          <div class="hero">
+            <div class="hero-text">
+              <h1>
+                <i class="fa-solid fa-fire doom-icon" aria-hidden="true"></i>
+                Can It Run DOOM&trade;?
+              </h1>
+              <p>
+                Exploring the legendary 1993 shooter that ended up running on
+                practically everything with a screen.
+              </p>
+              <!-- Three quick numbers about the game -->
+              <ul class="hero-stats">
+                <li><strong>1993</strong><span>Released</span></li>
+                <li><strong>30+</strong><span>Years of ports</span></li>
+                <li><strong>&infin;</strong><span>Devices</span></li>
+              </ul>
+            </div>
+            <img
+              id="doom-banner"
+              src="img/doom-header.jpg"
+              alt="Cover artwork for the 1993 game DOOM"
+            />
+          </div>
+        </header>
+
+        <main id="main-content">
+          <!-- Same-page anchor link -->
+          <p><a href="#overview">Jump to the overview</a></p>
+
+          <!-- Intro / About section -->
+          <section id="overview">
+            <h2>About DOOM</h2>
             <p>
-            Exploring the legendary 1993 shooter that ended up running on
-            practically everything with a screen.
+              DOOM is a first-person shooter released by id Software in December
+              1993. Built by programmers John Carmack and John Romero, it
+              dropped players into a demon-infested Mars base armed with a
+              shotgun and a chainsaw. It was fast, violent, and technically
+              groundbreaking for its time, and it helped define an entire genre
+              of video games.
+            </p>
+            <p>
+              More than thirty years later, DOOM is remembered for something
+              almost as impressive as the game itself: it seems to run on
+              <em>anything</em>. Because the original code was released to the
+              public, hobbyists have spent decades porting it to hardware that
+              was never meant to play games at all.
+            </p>
+          </section>
+
+          <!-- The signature list: unlikely devices that run DOOM -->
+          <section>
+            <h2 id="h2-philosophy">Unlikely Places DOOM Has Shown Up</h2>
+            <p>
+              "It runs DOOM" has become an internet challenge of its own. If a
+              device has a processor and a screen &mdash; and sometimes even
+              without a real screen &mdash; someone has probably gotten DOOM
+              working on it. Here are some of the most surprising places it has
+              shown up:
+            </p>
+            <ul class="device-list">
+              <li>Graphing calculators used in math class</li>
+              <li>A digital pregnancy test</li>
+              <li>ATM machines and gas-station pumps</li>
+              <li>Smart refrigerators and washing machines</li>
+              <li>Digital cameras and printers</li>
+              <li>John Deere tractor dashboards</li>
+              <li>Tiny handheld "cyberdecks" built by hobbyists</li>
+            </ul>
+          </section>
+
+          <!-- External reference link, also the hook for the CSS
+               attribute selector in theme.css -->
+          <section>
+            <h2>Learn More</h2>
+            <p>
+              Want the full history of the game and its endless ports? You can
+              read all about it on the
+              <a
+                href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
+                target="_blank"
+                rel="noopener noreferrer"
+                >DOOM Wikipedia article</a
+              >. On this site, <a href="story.html">The Story</a> covers how the
+              game was built, <a href="devices.html">Devices</a> lists the
+              strangest hardware it runs on, and the
+              <a href="gallery.html">Gallery</a> compares the source ports
+              people still maintain today.
+            </p>
+          </section>
+        </main>
+
+        <!-- Footer bar. Character entity &copy; renders the (c) symbol. -->
+        <footer class="site-footer">
+          <p class="footer-copy">
+            &copy; 2026 DJ Batalona &mdash; A CIS155 project.
           </p>
-          <!-- Three quick numbers about the game -->
-          <ul class="hero-stats">
-            <li><strong>1993</strong><span>Released</span></li>
-            <li><strong>30+</strong><span>Years of ports</span></li>
-            <li><strong>&infin;</strong><span>Devices</span></li>
+          <ul class="footer-links">
+            <li><a href="story.html">The Story</a></li>
+            <li><a href="devices.html">Devices</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=GrWzXzHcuFw"
+                target="_blank"
+                rel="noopener"
+                >Install guide (YouTube)</a
+              >
+            </li>
+            <li><a href="#top">Back to top</a></li>
           </ul>
-        </div>
-        <img id="doom-banner" src="DOOM Header.jpg" alt="DOOM game artwork" />
+        </footer>
       </div>
-    </header>
-
-    <main>
-  <!-- Same-page anchor link -->
-    <p><a href="#overview">Jump to the overview </a></p>
-
-      <!-- Intro / About section -->      
-       <section id="overview">
-          <h2>About DOOM</h2>
-        <p>
-          DOOM is a first-person shooter released by id Software in December
-          1993. Built by programmers John Carmack and John Romero, it dropped
-          players into a demon-infested Mars base armed with a shotgun and a
-          chainsaw. It was fast, violent, and technically groundbreaking for its
-          time, and it helped define an entire genre of video games.
-        </p>
-        <p>
-           More than thirty years later, DOOM is remembered for something almost
-          as impressive as the game itself: it seems to run on
-          <em>anything</em>. Because the original code was released to the
-          public, hobbyists have spent decades porting it to hardware that was
-          never meant to play games at all.
-        </p>
-      </section>
-
-       <!-- The signature list: unlikely devices that run DOOM -->
-      <section>
-        <h2 id="h2-philosophy">Unlikely Places DOOM Has Shown Up</h2>
-        <p>
-           "It runs DOOM" has become an internet challenge of its own. If a
-          device has a processor and a screen &mdash; and sometimes even without
-          a real screen &mdash; someone has probably gotten DOOM working on it.
-          Here are some of the most surprising places it has shown up:
-        </p>
-        <ul class="device-list">
-          <li>Graphing calculators used in math class</li>
-          <li>A digital pregnancy test</li>
-          <li>ATM machines and gas-station pumps</li>
-          <li>Smart refrigerators and washing machines</li>
-          <li>Digital cameras and printers</li>
-          <li>John Deere tractor dashboards</li>
-          <li>Tiny handheld "cyberdecks" built by hobbyists</li>
-        </ul>
-      </section>
-      <!-- External reference link (also the hook for the CSS attribute rule) -->
-
-      <section>
-       <h2>Learn More</h2>        <p>
-          Want the full history of the game and its endless ports? You can read
-          all about it on the
-          <a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)" target="_blank" rel="noopener noreferrer">
-            DOOM Wikipedia article</a>. Over the coming weeks I will add pages
-          about the story, a full gallery of devices, and my own favorite ports.
-        </p>
-      </section>
-    </main>
-    <!-- Footer with the required character entity: &copy; (the (c) symbol) -->
-    <footer class="site-footer">
-      <p class="footer-copy">&copy; 2026 DJ Batalona &mdash; A CIS155 project. </p>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="story.html">The Story</a></li>
-        <li><a href="devices.html">Devices</a></li>
-        <li><a href="#top">Back to top</a></li>
-        <li><a href="https://www.youtube.com/watch?v=GrWzXzHcuFw">Youtube install link</a></li>
-            
-      </ul>  
-    </footer>
-  </div><!--/.main-column -->
- </div><!--/.page-shell -->
- </body>
+    </div>
+  </body>
 </html>

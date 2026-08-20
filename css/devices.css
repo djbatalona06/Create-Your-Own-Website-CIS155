@@ -1,8 +1,9 @@
-/* devices.css - card grid layout for devices.html */
+/* devices.css - card layout for devices.html */
 
-/* auto-fit with minmax lets the browser work out how many columns
-   fit, so the cards go 3 to 2 to 1 on their own. Doing it this way
-   replaced two media queries that hard coded the column count. */
+/* Flex row of cards. flex-wrap plus the 15rem flex-basis on each card
+   lets the browser fit as many per row as there is room for, and
+   justify-content centers the last row instead of leaving it stranded
+   on the left with a gap beside it. */
 .device-grid {
   display: flex;
   flex-wrap: wrap;
@@ -11,8 +12,8 @@
   gap: 1.5rem;
 }
 
-/* Each card is a flex column so the cards in a row match heights
-   and the heading stays pinned to the top */
+/* Each card is itself a flex column, so cards in the same row match
+   heights and the heading stays pinned to the top */
 .device-card {
   display: flex;
   flex-direction: column;
@@ -33,8 +34,8 @@
   margin-bottom: 0;
 }
 
-/* Under about 416px a 15rem column is wider than the screen and the
-   cards overflow, so force a single column */
+/* Under about 416px a 15rem card is wider than the screen, so let each
+   card take the full width instead */
 @media (max-width: 26rem) {
   .device-grid {
     gap: 1rem;

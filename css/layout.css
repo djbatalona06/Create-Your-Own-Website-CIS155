@@ -1,17 +1,39 @@
-/* Shared layout and responsive behavior for the whole site */
+/* ---------------------------------------------------------------
+   layout.css - shared structure for every page.
+
+   This file owns the page shell, the flex and grid containers,
+   spacing, and every shared breakpoint. Colors and fonts live in
+   theme.css. Each page also loads its own stylesheet after this one.
+
+   Load order on every page is theme.css, then layout.css, then the
+   page stylesheet, so the breakpoints in here always win over the
+   plain rules in theme.css.
+   --------------------------------------------------------------- */
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Lora", serif;
   line-height: 1.6;
-  background-color: #111111;
-  color: #e8e0d5;
 }
 
-/* Grid that splits every page into a sidebar and a content column */
+/* Sits off screen until a keyboard user tabs to it, then jumps into
+   the corner so they can skip the nav and go straight to the content */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* GRID: splits every page into a sidebar column and a content column */
 .page-shell {
   display: grid;
   grid-template-columns: minmax(12rem, 18rem) 1fr;
@@ -19,12 +41,14 @@ body {
 }
 
 .sidebar {
-  background-color: #2a0e0e;
   padding: 1.25rem;
+  /* Divider lives here rather than in theme.css because it moves from
+     the right edge to the bottom edge at the 62rem breakpoint below */
   border-right: 0.125rem solid #5a1616;
 }
 
-/* Flex menu. Column on desktop, switched to a row further down. */
+/* FLEX: the navigation menu. A column beside the content on desktop,
+   switched to a row across the top further down. */
 .site-nav {
   display: flex;
   flex-direction: column;
@@ -32,36 +56,36 @@ body {
 }
 
 .site-nav a {
-  text-decoration: none;
-  color: #f5eadc;
   padding: 0.65rem 0.8rem;
-  border-radius: 0.25rem;
-  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.site-nav a:hover,
-.site-nav a:focus {
-  background-color: #c81e1e;
-  color: #ffffff;
-}
+/* FLEX: stacks the header, main and footer. The flex:1 on main pushes
+   the footer to the bottom on pages with less content.
 
-/* Stacks header, main and footer. The flex:1 on main below keeps
-   the footer at the bottom on short pages. */
+   min-width: 0 matters here. As a grid item this column defaults to
+   min-width: auto, which means it refuses to shrink below the widest
+   thing inside it - so the wide table on the gallery page was pushing
+   the entire page sideways instead of scrolling inside its own wrapper. */
 .main-column {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
-header,
-footer {
-  padding: 1.5rem 2rem;
+header {
+  padding: 2rem 2rem 2.5rem;
 }
 
 main {
   flex: 1;
   width: min(100%, 60rem);
   margin: 0 auto;
-  padding: 1.5rem 2rem 2.5rem;
+  padding: 0 2rem 2.5rem;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
 }
 
 img {
@@ -74,13 +98,8 @@ section {
   margin-bottom: 1.5rem;
 }
 
-footer {
-  text-align: center;
-  border-top: 0.0625rem solid rgba(255, 255, 255, 0.12);
-}
-
 /* Headings scale with the screen instead of jumping at a breakpoint,
-   so the h1 never overflows once the window gets down near 360px. */
+   so the h1 never overflows once the window gets down near 360px */
 h1 {
   font-size: clamp(1.5rem, 5vw, 2.75rem);
   line-height: 1.2;
@@ -105,7 +124,15 @@ a {
   overflow-wrap: break-word;
 }
 
-/* Homepage intro. Text on one side, banner on the other, and
+/* Decorative icon at the top of each card and tile. Sized here, colored
+   in theme.css. */
+.card-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* FLEX: homepage intro. Text on one side, banner on the other, and
    flex-wrap lets the two halves stack once they get too narrow. */
 .hero {
   display: flex;
@@ -122,7 +149,7 @@ a {
   flex: 1 1 22rem;
 }
 
-/* Row of small stat boxes under the intro text */
+/* FLEX: row of small stat boxes under the intro text */
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
@@ -134,23 +161,19 @@ a {
 
 .hero-stats li {
   flex: 1 1 6rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-left: 0.2rem solid rgb(200, 30, 30);
   padding: 0.5rem 0.75rem;
 }
 
 .hero-stats strong {
   display: block;
   font-size: 1.4rem;
-  color: rgb(255, 120, 90);
 }
 
 .hero-stats span {
   font-size: 0.85rem;
-  color: #b8b0a5;
 }
 
-/* Footer bar: copyright on the left, links on the right */
+/* FLEX: footer bar. Copyright on the left, link list on the right. */
 .site-footer {
   display: flex;
   flex-wrap: wrap;
@@ -181,9 +204,9 @@ a {
   }
 }
 
-/* Drop to one column here. Without this the sidebar keeps its width
-   all the way down and the content column ends up around 200px wide.
-   The nav becomes a row of links across the top instead. */
+/* Drop to one column here. Without this the sidebar keeps its width all
+   the way down and the content column ends up around 200px wide at
+   360px. The nav becomes a row of links across the top instead. */
 @media (max-width: 62rem) {
   .page-shell {
     grid-template-columns: 1fr;
@@ -200,17 +223,24 @@ a {
     justify-content: center;
   }
 
-  /* Equal shares keep the links from wrapping into a ragged
-     second line, and nowrap stops "External Link" splitting. */
+  /* Equal shares keep the links from wrapping into a ragged second
+     line, and nowrap stops "External Link" splitting mid-word */
   .site-nav a {
     flex: 1 1 8rem;
     text-align: center;
     white-space: nowrap;
   }
+
+  header,
+  main,
+  footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-/* The intro halves are too narrow side by side by now, so center
-   everything once they stack */
+/* The two halves of the intro are too narrow side by side by now, so
+   center everything once they stack */
 @media (max-width: 48rem) {
   .hero {
     gap: 1.25rem;
@@ -234,7 +264,7 @@ a {
   }
 }
 
-/* Smaller gutters and two nav links per row */
+/* Smaller gutters, two nav links per row, thinner banner frame */
 @media (max-width: 40rem) {
   header,
   main,
@@ -250,10 +280,22 @@ a {
   main section {
     padding: 1rem;
   }
+
+  #doom-banner {
+    border-width: 0.2rem;
+  }
+
+  .device-list {
+    padding-left: 1rem;
+  }
+
+  .device-list li {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
-/* Two links across starts cutting off the longer labels, so go back
-   to one per row */
+/* Two links across starts cutting off the longer labels, so go back to
+   one per row */
 @media (max-width: 30rem) {
   .site-nav {
     flex-direction: column;

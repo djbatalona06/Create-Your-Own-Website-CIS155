@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <!-- ============================================================= -->
 <!-- Can It Run DOOM? - Devices Page                               -->
+<!-- A card layout of the odd hardware DOOM has been ported to.    -->
 <!-- ============================================================= -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Devices That Run DOOM</title>
+
+    <!-- Skull favicon, drawn inline as an SVG so there is no extra file -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Cellipse cx='50' cy='44' rx='30' ry='28' fill='%23c81e1e'/%3E%3Cellipse cx='38' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cellipse cx='62' cy='42' rx='8' ry='10' fill='%23111111'/%3E%3Cpolygon points='50,50 45,60 55,60' fill='%23111111'/%3E%3Crect x='35' y='66' width='30' height='10' fill='%23c81e1e'/%3E%3Crect x='38' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='46' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='54' y='66' width='4' height='10' fill='%23111111'/%3E%3Crect x='62' y='66' width='3' height='10' fill='%23111111'/%3E%3C/svg%3E"
+    />
+
+    <!-- Google Font for the headings and body copy -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
-    <!-- Shared site styles, the DOOM theme, then this page's grid layout -->
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <!-- Font Awesome, used for the flame icon beside the page title -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Shared theme, shared layout, then this page's card styles -->
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/devices.css" />
   </head>
   <body>
+    <!-- Lets keyboard users jump past the nav straight to the content -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <div class="page-shell">
       <!-- Same vertical nav menu on every page -->
       <aside class="sidebar">
@@ -34,89 +53,174 @@
         </nav>
       </aside>
 
-    <div class="main-column">
-    
-     <header id="top">
-      <h1>Devices That Run DOOM</h1>
-      <p>
-        A closer look at the unlikely hardware hobbyists have talked into
-        running the 1993 classic.
-      </p>
-     </header>
-
-    <main>
-      <section>
-        <h2>The "It Runs DOOM" Challenge</h2>
-        <p>
-          Because id Software eventually released the DOOM source code,
-          programmers have spent decades porting it to hardware that was
-          never designed to play games at all. Below are some of the most
-          surprising ports, laid out in a card grid so you can browse them
-          at a glance.
-        </p>
-      </section>
-      
-       <!-- Card grid that changes layout at different breakpoints -->
-      <section class="device-grid">
-        <article class="device-card">
-          <h3>Graphing Calculators</h3>
+      <div class="main-column">
+        <header id="top">
+          <h1>
+            <i class="fa-solid fa-fire doom-icon" aria-hidden="true"></i>
+            Devices That Run DOOM
+          </h1>
           <p>
-            TI-83s and TI-84s used in math classrooms everywhere have been
-            reprogrammed to run DOOM, monster closet and all.
+            A closer look at the unlikely hardware hobbyists have talked into
+            running the 1993 classic.
           </p>
-        </article>
+        </header>
 
-        <article class="device-card">
-          <h3>A Digital Pregnancy Test</h3>
-          <p>
-            Its tiny LCD screen and low-power processor turned out to be
-            just enough to render a scaled-down version of the game.
-          </p>
-        </article>
+        <main id="main-content">
+          <section>
+            <h2>The "It Runs DOOM" Challenge</h2>
+            <p>
+              Because id Software eventually released the DOOM source code,
+              programmers have spent decades porting it to hardware that was
+              never designed to play games at all. Below are some of the most
+              surprising ports, laid out as cards so you can browse them at a
+              glance.
+            </p>
+          </section>
 
-        <article class="device-card">
-          <h3>ATMs &amp; Gas Pumps</h3>
-          <p>
-            Both run stripped-down versions of Windows, which is all the
-            excuse a hobbyist needs to get DOOM running on the till.
-          </p>
-        </article>
+          <!-- Card layout that reflows as the screen narrows. Each icon is
+               decorative, so aria-hidden keeps screen readers from
+               announcing it twice - the h3 beside it is the real label. -->
+          <section class="device-grid">
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <rect x="7.5" y="4.5" width="9" height="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="9" cy="12" r="1" fill="currentColor" />
+                <circle cx="12" cy="12" r="1" fill="currentColor" />
+                <circle cx="15" cy="12" r="1" fill="currentColor" />
+                <circle cx="9" cy="16" r="1" fill="currentColor" />
+                <circle cx="12" cy="16" r="1" fill="currentColor" />
+                <circle cx="15" cy="16" r="1" fill="currentColor" />
+              </svg>
+              <h3>Graphing Calculators</h3>
+              <p>
+                TI-83s and TI-84s used in math classrooms everywhere have been
+                reprogrammed to run DOOM, monster closet and all.
+              </p>
+            </article>
 
-        <article class="device-card">
-          <h3>Smart Appliances</h3>
-          <p>
-            Refrigerators and washing machines with touchscreen controls
-            have enough of a computer inside to boot the game.
-          </p>
-        </article>
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="2" y="9" width="20" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <rect x="5.5" y="11" width="4" height="2" fill="currentColor" />
+                <line x1="16" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <h3>A Digital Pregnancy Test</h3>
+              <p>
+                Its tiny LCD screen and low-power processor turned out to be
+                just enough to render a scaled-down version of the game.
+              </p>
+            </article>
 
-        <article class="device-card">
-          <h3>Cameras &amp; Printers</h3>
-          <p>
-            Digital cameras and office printers both hide a small embedded
-            OS &mdash; and an embedded OS is a DOOM port waiting to happen.
-          </p>
-        </article>
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="3" width="11" height="18" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <rect x="5.5" y="5.5" width="6" height="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <line x1="5.5" y1="13" x2="11.5" y2="13" stroke="currentColor" stroke-width="1.5" />
+                <path d="M14 8h3a1 1 0 0 1 1 1v8a1.5 1.5 0 0 0 3 0v-6" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <h3>ATMs &amp; Gas Pumps</h3>
+              <p>
+                Both run stripped-down versions of Windows, which is all the
+                excuse a hobbyist needs to get DOOM running on the till.
+              </p>
+            </article>
 
-        <article class="device-card">
-          <h3>Tractor Dashboards</h3>
-          <p>
-            John Deere's touchscreen displays run Linux under the hood,
-            which is more than enough horsepower for id's 1993 engine.
-          </p>
-        </article>
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="6" y="2" width="12" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <line x1="6" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.5" />
+                <line x1="9" y1="5" x2="9" y2="7" stroke="currentColor" stroke-width="1.5" />
+                <line x1="9" y1="11" x2="9" y2="14" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <h3>Smart Appliances</h3>
+              <p>
+                Refrigerators and washing machines with touchscreen controls
+                have enough of a computer inside to boot the game.
+              </p>
+            </article>
 
-        <article class="device-card">
-          <h3>Handheld Cyberdecks</h3>
-          <p>
-            Tiny hobbyist-built handhelds, cobbled together from Raspberry
-            Pis and spare parts, exist mostly to prove DOOM can run on them.
-          </p>
-        </article>
-      </section>
-    </main>
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="2" y="7" width="20" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="M8 7l1.5-2.5h5L16 7" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="12" cy="13.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <h3>Cameras &amp; Printers</h3>
+              <p>
+                Digital cameras and office printers both hide a small embedded
+                OS &mdash; and an embedded OS is a DOOM port waiting to happen.
+              </p>
+            </article>
 
-        <!-- Same footer bar as the other pages -->
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="7" cy="17" r="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="18" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="M4 13V8h5l2 5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="M11 13h7v2" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <h3>Tractor Dashboards</h3>
+              <p>
+                John Deere's touchscreen displays run Linux under the hood,
+                which is more than enough horsepower for id's 1993 engine.
+              </p>
+            </article>
+
+            <article class="device-card">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="2" y="6" width="20" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <rect x="9" y="9" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <line x1="5.5" y1="12" x2="7.5" y2="12" stroke="currentColor" stroke-width="1.5" />
+                <line x1="6.5" y1="11" x2="6.5" y2="13" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="18" cy="11" r="1" fill="currentColor" />
+                <circle cx="18" cy="14" r="1" fill="currentColor" />
+              </svg>
+              <h3>Handheld Cyberdecks</h3>
+              <p>
+                Tiny hobbyist-built handhelds, cobbled together from Raspberry
+                Pis and spare parts, exist mostly to prove DOOM can run on them.
+              </p>
+            </article>
+          </section>
+        </main>
+
+        <!-- Footer bar. Character entity &copy; renders the (c) symbol. -->
         <footer class="site-footer">
           <p class="footer-copy">
             &copy; 2026 DJ Batalona &mdash; A CIS155 project.
@@ -125,6 +229,14 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="story.html">The Story</a></li>
             <li><a href="gallery.html">Gallery</a></li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=GrWzXzHcuFw"
+                target="_blank"
+                rel="noopener"
+                >Install guide (YouTube)</a
+              >
+            </li>
             <li><a href="#top">Back to top</a></li>
           </ul>
         </footer>
