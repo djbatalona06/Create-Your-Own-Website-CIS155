@@ -4,6 +4,8 @@
 
 **Read order:** 01 PRD → 02 TRD → 03 App Flow → 04 UI/UX Brief → 05 Backend Schema → 06 Implementation Plan.
 
+**Revision 2:** Corrected the audio facts (doomgeneric's SDL port includes sound). Added the build type (TRD) and a risk-mitigation table (TRD). Made the Phase 0 gate time-boxed and moved a rough touch test into Phase 1.
+
 ---
 
 ## 01. PRD (Product Requirements Doc)
@@ -47,7 +49,7 @@ Ship a free iOS and Android app that plays **Episode 1 (E1M1–E1M9, the id shar
 - Crash-free sessions at or above 99% in the first 30 days (TestFlight and Play internal testing before public release).
 
 ### Key risks
-1. **Audio:** doomgeneric does not include sound. The OPL music and SFX path is the largest unknown.
+1. **Audio:** doomgeneric's SDL port includes sound and music (`FEATURE_SOUND`), so reuse that approach. Music needs OPL FM synthesis, which Chocolate Doom provides under GPL-2.0. This stays the largest unknown until Phase 4 proves it on a phone.
 2. **GPL vs. store terms:** see the legal table above.
 3. **Touch input:** the original game expects a keyboard. Touch controls must not feel laggy.
 
@@ -68,6 +70,12 @@ Ship a free iOS and Android app that plays **Episode 1 (E1M1–E1M9, the id shar
 | Min OS | Android 8.0 (API 26), iOS 15 | Enough reach for an app like this. |
 
 > Confirm the current doomgeneric and SDL/SDL_mixer versions and their licenses before the Phase 0 spike. Pin exact versions in the lockfile once chosen.
+
+### Build type
+**Shared C engine + two thin native shells, built with CMake.**
+- One C tree holds the engine and the platform layer. CMake builds it for Linux (desktop tests), Android (NDK), and iOS.
+- The Android (Kotlin) and iOS (Swift) shells only host the window, touch overlay, file picker, and app lifecycle. No game logic lives in them.
+- Rejected: Unity or Godot (the engine would have to be rewritten in another runtime, and the 35 Hz logic would need re-verification). A WebView build (input and audio latency is too high for a shooter).
 
 ### Architecture
 ```
@@ -111,6 +119,18 @@ Ship a free iOS and Android app that plays **Episode 1 (E1M1–E1M9, the id shar
 - **Unit-level:** a small C smoke test that loads `DOOM1.WAD` and runs 100 tics headless.
 - **Device:** a manual checklist per phase on one Android and one iPhone.
 - **Regression:** record a demo file on desktop Linux and replay it on mobile. Same inputs should produce the same map state.
+
+### Risk mitigations
+| Risk | Mitigation |
+|---|---|
+| Audio (SFX and music) | Reuse doomgeneric's SDL sound module for SFX. Take OPL music from Chocolate Doom. Fall back to SFX-only for v1 if music is blocked. |
+| GPL vs. store terms | Get a written store-policy answer before Phase 1. Keep GPL notices and a source offer ready. If a store refuses GPL apps, ship on another store. |
+| Engine drift | Leave engine files unmodified. Put all changes in the platform layer so upstream fixes merge cleanly. |
+| Touch feel and lag | Run a rough touch test on a real phone in Phase 1, not Phase 3, so problems show up early. |
+| Performance and battery | Keep logic at 35 ticks/sec and draw only 320×200. Profile audio mixing first, since that is the likely hot spot. |
+| Trademark | Keep the working title. Counsel signs off before any store listing. |
+| Scope creep | Time-box Phase 0 before starting. If E1M1 is not on track, switch to Chocolate Doom. |
+| Porting bugs | Replay desktop demo files on the phone. Same inputs should give the same map state. |
 
 ---
 
@@ -253,13 +273,13 @@ Each phase ends with a **runnable check**. Do not start the next phase until the
 2. Run `DOOM1.WAD` and confirm E1M1 loads and plays.
 3. Measure logic at 35 ticks/sec using the engine's own timer.
 - **Check:** a 60-second headless run of E1M1 finishes with no crashes and a steady tick count.
-- **Decision gate:** if the engine is hard to port or sound is blocked, switch to Chocolate Doom. Record the choice in the TRD.
+- **Decision gate (time-boxed):** agree the time box before starting. If E1M1 does not run at 35 ticks/sec within it, or the SDL sound module will not play on desktop, switch to Chocolate Doom. Record the choice in the TRD.
 
 ### Phase 1: Android shell
 1. Create the Android project with CMake building the C core.
 2. Implement the `DG_*` hooks for Android (surface draw, timing, key queue).
 3. Add the hardware keyboard path so the game is playable with a keyboard.
-- **Check:** E1M1 is playable on a physical device with a keyboard and renders at 60 fps display refresh.
+- **Check:** E1M1 is playable on a physical device with a keyboard and renders at 60 fps display refresh. A rough touch-pad test on the same phone shows the input lag, so touch problems surface here, not in Phase 3.
 
 ### Phase 2: iOS shell
 1. Create the iOS project with the same C core.
@@ -272,10 +292,10 @@ Each phase ends with a **runnable check**. Do not start the next phase until the
 - **Check:** E1 is completable on touch alone, on one Android and one iPhone. Input lag is under 100 ms in a manual test.
 
 ### Phase 4: Audio (the biggest unknown)
-1. Add SFX playback through SDL_mixer.
-2. Add music. The original music is MIDI rendered through OPL FM synthesis. Evaluate an OPL emulator (for example from Chocolate Doom) and a stock soundfont as options.
+1. Port doomgeneric's SDL sound module for SFX through SDL_mixer. Check the license of every file it pulls in.
+2. Add music. The original music is MIDI rendered through OPL FM synthesis. Use Chocolate Doom's OPL emulator (GPL-2.0). A stock soundfont is the fallback if OPL is hard to link on mobile.
 3. Add volume settings.
-- **Check:** SFX and music play on both platforms with no stutter over 10 minutes. If the music path is not workable, ship SFX-only and log music as a known gap.
+- **Check:** SFX and music play on both platforms with no stutter over 10 minutes, and audio mixing causes no CPU spike during heavy combat. If the music path is not workable, ship SFX-only and log music as a known gap.
 
 ### Phase 5: Menus, save/load, settings
 1. Wire the main menu, episode and skill select, pause menu, and options.
@@ -301,4 +321,5 @@ Each phase ends with a **runnable check**. Do not start the next phase until the
 1. Final app name, since the working title can't use DOOM.
 2. Confirm the shareware WAD redistribution terms.
 3. Confirm each app store accepts a GPL-2.0 app and what source-offer language it needs.
-4. Choose the audio path: OPL emulator plus soundfont, or SFX-only for v1.
+4. Audio path: confirm doomgeneric's SDL sound module works on desktop, then choose OPL music (from Chocolate Doom) or SFX-only for v1.
+5. Confirm doomgeneric's exact license and `DG_*` hook names against its repo. Both are from search excerpts so far.
