@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#12051f" />
+    <meta name="description" content="Neon Somnia: a surreal cyberpunk first-person shooter you can play in your phone's browser." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Neon Somnia" />
+    <title>Neon Somnia</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="stylesheet" href="css/game.css" />
+    <!-- Tells the browser where "three" lives, so the JS can just import 'three' -->
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.min.js" } }
+    </script>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <!-- The 3D view -->
+    <canvas id="view" aria-label="Game view"></canvas>
+
+    <!-- Heads-up display: health, armor, ammo, keys -->
+    <div id="hud" hidden>
+      <div class="hud-top">
+        <div class="hud-level"><span id="hud-level"></span> · <span id="hud-time">0:00</span></div>
+        <div class="hud-keys">
+          <span id="hud-key-red" class="key red" hidden aria-label="Red keycard"></span>
+          <span id="hud-key-blue" class="key blue" hidden aria-label="Blue keycard"></span>
+          <span id="hud-lucid" class="lucid" hidden></span>
+        </div>
+      </div>
+      <div class="crosshair" aria-hidden="true"></div>
+      <p id="hud-message" class="hud-message" role="status" aria-live="polite"></p>
+      <div class="hud-bottom">
+        <div class="stat hp"><small>HEALTH</small><b id="hud-hp">100</b></div>
+        <div class="stat armor"><small>ARMOR</small><b id="hud-armor">0</b></div>
+        <div class="stat volts"><small id="hud-weapon">PULSE PISTOL</small><b><span id="hud-volts">0</span> V</b></div>
+      </div>
+    </div>
+
+    <!-- Touch controls (phones and tablets) -->
+    <div id="touch" hidden>
+      <div id="zone-move" class="touch-zone"></div>
+      <div id="zone-look" class="touch-zone"></div>
+      <div id="stick" aria-hidden="true"><div id="stick-knob"></div></div>
+      <button id="btn-pause" class="tbtn pause" type="button" aria-label="Pause">II</button>
+      <button id="btn-weapon" class="tbtn weapon" type="button" aria-label="Swap weapon">SWAP</button>
+      <button id="btn-use" class="tbtn use" type="button" aria-label="Use or open">USE</button>
+      <button id="btn-fire" class="tbtn fire" type="button" aria-label="Fire, drag to aim">FIRE</button>
+    </div>
+
+    <!-- Loading -->
+    <section id="screen-loading" class="screen">
+      <p class="blink">Falling asleep...</p>
+    </section>
+
+    <!-- Title -->
+    <section id="screen-title" class="screen" hidden>
+      <div class="panel">
+        <h1 class="logo">NEON<span>SOMNIA</span></h1>
+        <p class="sub">A night courier. A city's shared dream. Three ways to wake up.</p>
+        <div class="buttons">
+          <button class="btn primary" type="button" data-action="play">Start Dreaming</button>
+          <button id="btn-continue" class="btn" type="button" data-action="continue" hidden>Continue</button>
+          <button class="btn" type="button" data-action="levels">Choose Dream</button>
+          <button class="btn" type="button" data-action="options">Options</button>
+          <button class="btn" type="button" data-action="help">How to Play</button>
+        </div>
+        <p class="note">Contains flashing lights and screen glitches. Options → Glitch FX can soften or turn them off.</p>
+        <p class="note"><a href="../index.html">← Back to the website</a></p>
+      </div>
+    </section>
+
+    <!-- Level select -->
+    <section id="screen-levels" class="screen" hidden>
+      <div class="panel">
+        <h2>Choose a Dream</h2>
+        <div id="level-list" class="buttons"></div>
+        <button class="btn" type="button" data-action="back">Back</button>
+      </div>
+    </section>
+
+    <!-- Options -->
+    <section id="screen-options" class="screen" hidden>
+      <div class="panel">
+        <h2>Options</h2>
+        <form id="options-form" class="options">
+          <label>Music <input type="range" name="musicVol" min="0" max="1" step="0.05" /></label>
+          <label>Sound effects <input type="range" name="sfxVol" min="0" max="1" step="0.05" /></label>
+          <label>Look speed <input type="range" name="lookSens" min="0.3" max="2.5" step="0.1" /></label>
+          <label>Touch button opacity <input type="range" name="touchOpacity" min="0.15" max="1" step="0.05" /></label>
+          <label>
+            Glitch FX
+            <select name="fx">
+              <option value="full">Full</option>
+              <option value="soft">Soft (less flashing)</option>
+              <option value="off">Off (no flashing)</option>
+            </select>
+          </label>
+          <label>
+            Quality
+            <select name="quality">
+              <option value="low">Low (fastest)</option>
+              <option value="med">Medium</option>
+              <option value="high">High (sharpest)</option>
+            </select>
+          </label>
+          <label class="check"><input type="checkbox" name="leftHanded" /> Left-handed controls</label>
+          <label class="check"><input type="checkbox" name="vibrate" /> Vibrate when hurt (Android)</label>
+        </form>
+        <button class="btn" type="button" data-action="optionsBack">Back</button>
+      </div>
+    </section>
+
+    <!-- How to play -->
+    <section id="screen-help" class="screen" hidden>
+      <div class="panel help">
+        <h2>How to Play</h2>
+        <h3>On a phone</h3>
+        <ul>
+          <li>Left thumb: put it down anywhere on the left side to walk.</li>
+          <li>Right thumb: drag on the right side to turn.</li>
+          <li>Hold FIRE to shoot (you can drag it to aim too). USE opens doors.</li>
+        </ul>
+        <h3>On a computer</h3>
+        <ul>
+          <li>WASD to walk, mouse to turn (click the game first), click to shoot.</li>
+          <li>E or Space to use · 1-3 or Q to swap weapons · Esc to pause.</li>
+        </ul>
+        <h3>Dream rules</h3>
+        <ul>
+          <li>Some doors need a keycard. Some rooms are bigger on the inside.</li>
+          <li>If a hallway feels too familiar, look for something watching you.</li>
+          <li>The Lucid Pill turns everything to cardboard and doubles your damage.</li>
+        </ul>
+        <button class="btn" type="button" data-action="back">Back</button>
+      </div>
+    </section>
+
+    <!-- Level intro -->
+    <section id="screen-intro" class="screen" hidden>
+      <div class="panel">
+        <p id="intro-number" class="sub"></p>
+        <h2 id="intro-name" class="big"></h2>
+        <p id="intro-tagline" class="tagline"></p>
+        <button class="btn primary" type="button" data-action="begin">Enter the Dream</button>
+      </div>
+    </section>
+
+    <!-- Pause -->
+    <section id="screen-paused" class="screen dim" hidden>
+      <div class="panel">
+        <h2>Paused</h2>
+        <div class="buttons">
+          <button class="btn primary" type="button" data-action="resume">Resume</button>
+          <button class="btn" type="button" data-action="restart">Restart Dream</button>
+          <button class="btn" type="button" data-action="options">Options</button>
+          <button class="btn" type="button" data-action="quit">Quit to Title</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Level clear -->
+    <section id="screen-clear" class="screen dim" hidden>
+      <div class="panel">
+        <h2>Dream Escaped</h2>
+        <dl class="stats">
+          <dt>Time</dt><dd id="clear-time"></dd>
+          <dt>Best</dt><dd id="clear-best"></dd>
+          <dt>Dreamers calmed</dt><dd id="clear-kills"></dd>
+          <dt>Secrets</dt><dd id="clear-secrets"></dd>
+        </dl>
+        <button class="btn primary" type="button" data-action="next">Next Dream</button>
+      </div>
+    </section>
+
+    <!-- Game over -->
+    <section id="screen-dead" class="screen dim" hidden>
+      <div class="panel">
+        <h2 class="bad">You Slipped Deeper</h2>
+        <dl class="stats">
+          <dt>Time</dt><dd id="dead-time"></dd>
+          <dt>Dreamers calmed</dt><dd id="dead-kills"></dd>
+        </dl>
+        <div class="buttons">
+          <button class="btn primary" type="button" data-action="retry">Try Again</button>
+          <button class="btn" type="button" data-action="back">Title</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ending -->
+    <section id="screen-win" class="screen bright" hidden>
+      <div class="panel">
+        <h2 class="big">You Woke Up.</h2>
+        <p class="tagline">Sunlight. A phone buzzing with delivery orders. Was any of it real?</p>
+        <dl class="stats">
+          <dt>Final dream time</dt><dd id="win-time"></dd>
+          <dt>Dreamers calmed</dt><dd id="win-kills"></dd>
+        </dl>
+        <button class="btn primary" type="button" data-action="back">Back to Title</button>
+      </div>
+    </section>
+
+    <!-- Portrait warning on phones -->
+    <section id="screen-rotate" class="rotate" hidden>
+      <div class="panel">
+        <div class="phone-icon" aria-hidden="true"></div>
+        <p>Turn your phone sideways to play.</p>
+        <button class="btn" type="button" data-action="rotateOk">Play anyway</button>
+      </div>
+    </section>
+  </body>
+</html>
